@@ -8,18 +8,18 @@ Client Node for the Distributed and Decentralized IoT Platform
 `[PUT] /ifps-hash/{device_id}`
 
 Request body:
-```
+```json
 {
-  "email": <user's email>,
-  "password": <user's password>
+  "email": "<user's email>",
+  "password": "<user's password>"
 }
 ```
 
 Response:
 - For successfully authenticated user - 200 OK with IFPS hash
-```
+```json
 {
-  "ipfsHash": <IFPS hash>
+  "ipfsHash": "<IFPS hash>"
 }
 ```
 
