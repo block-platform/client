@@ -10,8 +10,8 @@ Client Node for the Distributed and Decentralized IoT Platform
 Request body:
 ```json
 {
-  "email": "<user's email>",
-  "password": "<user's password>"
+  "email": "<email>",
+  "password": "<password>"
 }
 ```
 
