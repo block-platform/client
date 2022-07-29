@@ -10,8 +10,8 @@ Client Node for the Distributed and Decentralized IoT Platform
 Request body:
 ```json
 {
-  "email": "<email>",
-  "password": "<password>"
+    "email": "<email>",
+    "password": "<password>"
 }
 ```
 
@@ -19,7 +19,7 @@ Response:
 - For successfully authenticated user - 200 OK with IFPS hash
 ```json
 {
-  "ipfsHash": "<IFPS hash>"
+    "ipfsHash": "<IFPS hash>"
 }
 ```
 
