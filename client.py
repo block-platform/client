@@ -1,8 +1,8 @@
 from getpass import getpass
 import requests
 
-URL = "http://127.0.0.1:5000/ipfs-hash/%s"
-# URL = "http://127.0.0.1:8080/ipfs-hash/%s"
+# URL = "http://127.0.0.1:5000/ipfs-hash/%s"
+URL = "http://127.0.0.1:8080/ipfs-hash/%s"
 
 
 def get_info():
@@ -15,13 +15,20 @@ def get_info():
 def get_ipfs_hash(email, password, device_id):
     url = URL % device_id
     headers = {'Content-type': 'application/json'}
-    response = requests.put(url, json={"email": email, "password": password}, headers=headers)
+    response = requests.put(
+        url, json={"email": email, "password": password}, headers=headers)
 
     return response.json()["ipfsHash"]
 
 
 def get_ipfs_data(ipfs_hash):
-    pass
+    params = (
+        ('arg', ipfs_hash),
+    )
+
+    response = requests.post('https://ipfs.infura.io:5001/api/v0/block/get', params=params)
+
+    return response.text
 
 
 def main():
@@ -30,6 +37,7 @@ def main():
     print(f"\nIPFS hash returned is: {ipfs_hash}")
 
     data = get_ipfs_data(ipfs_hash)
+    print(f"\nIPFS data returned is: {data}")
 
 
 if __name__ == '__main__':
