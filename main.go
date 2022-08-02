@@ -18,7 +18,7 @@ type IpfsHash struct {
 
 func sendRequest(email, password, deviceID string, target interface{}) error {
 	client := &http.Client{}
-	url := "http://localhost:5000/ipfs-hash/" + deviceID
+	url := "http://127.0.0.1:5000/ipfs-hash/" + deviceID
 	fmt.Printf("Sending request to manager node at URL %v", url)
 	putBody, _ := json.Marshal(map[string]string{"email": email, "password": password})
 	resp, err := http.NewRequest(http.MethodPut, url, bytes.NewBuffer(putBody))
