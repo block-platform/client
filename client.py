@@ -18,7 +18,10 @@ def get_ipfs_hash(email, password, device_id):
     response = requests.put(
         url, json={"email": email, "password": password}, headers=headers)
 
-    return response.json()["ipfsHash"]
+    if response.status_code == 200:
+        return response.json()["ipfs_hash"]
+    else:
+        return None
 
 
 def get_ipfs_data(ipfs_hash):
@@ -34,6 +37,11 @@ def get_ipfs_data(ipfs_hash):
 def main():
     email, password, device_id = get_info()
     ipfs_hash = get_ipfs_hash(email, password, device_id)
+    
+    if ipfs_hash is None:
+        print(f"Error: Client doesn't have access to device - {device_id}")
+        return
+
     print(f"\nIPFS hash returned is: {ipfs_hash}")
 
     data = get_ipfs_data(ipfs_hash)
