@@ -19,7 +19,7 @@ def get_ipfs_hash(email, password, device_id):
         url, json={"email": email, "password": password}, headers=headers)
 
     if response.status_code == 200:
-        return response.json()["ipfs_hash"]
+        return response.json()["ipfsHash"]
     else:
         return None
 
